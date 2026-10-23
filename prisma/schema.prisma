@@ -1,0 +1,253 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  EDITOR
+  HR
+}
+
+enum ApplicationStatus {
+  NEW
+  REVIEWING
+  SHORTLISTED
+  REJECTED
+}
+
+enum InquiryStatus {
+  NEW
+  IN_PROGRESS
+  CLOSED
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(EDITOR)
+  isActive     Boolean   @default(true)
+  lastLogin    DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("users")
+}
+
+model SiteSetting {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+model HomeSection {
+  id          Int     @id @default(autoincrement())
+  sectionKey  String  @unique
+  title       String?
+  subtitle    String?
+  image       String?
+  buttonText  String?
+  buttonLink  String?
+  sortOrder   Int     @default(0)
+  isActive    Boolean @default(true)
+
+  @@map("home_sections")
+}
+
+model ServiceCategory {
+  id       Int       @id @default(autoincrement())
+  name     String
+  slug     String    @unique
+  services Service[]
+
+  @@map("service_categories")
+}
+
+model Service {
+  id               Int              @id @default(autoincrement())
+  categoryId       Int?
+  category         ServiceCategory? @relation(fields: [categoryId], references: [id])
+  title            String
+  slug             String           @unique
+  shortDescription String
+  fullDescription  String           @db.Text
+  icon             String
+  image            String?
+  features         Json?
+  faq              Json?
+  seoTitle         String?
+  seoDescription   String?
+  sortOrder        Int              @default(0)
+  isActive         Boolean          @default(true)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@map("services")
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String
+  slug         String   @unique
+  clientName   String?
+  category     String
+  description  String   @db.Text
+  coverImage   String?
+  images       Json?
+  technologies String?
+  liveUrl      String?
+  isActive     Boolean  @default(true)
+  isFeatured   Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model BlogPost {
+  id            Int        @id @default(autoincrement())
+  title         String
+  slug          String     @unique
+  content       String     @db.Text
+  excerpt       String?
+  featuredImage String?
+  category      String?
+  status        PostStatus @default(DRAFT)
+  publishedAt   DateTime?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@map("blog_posts")
+}
+
+model JobOpening {
+  id           Int           @id @default(autoincrement())
+  title        String
+  slug         String        @unique
+  department   String?
+  location     String        @default("Pune, Maharashtra")
+  jobType      String        @default("Full-time")
+  description  String        @db.Text
+  requirements String        @db.Text
+  salaryRange  String?
+  isActive     Boolean       @default(true)
+  closingDate  DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  applications Application[]
+
+  @@map("job_openings")
+}
+
+model Application {
+  id            Int               @id @default(autoincrement())
+  jobId         Int?
+  job           JobOpening?       @relation(fields: [jobId], references: [id])
+  jobTitle      String
+  applicantName String
+  email         String
+  phone         String?
+  coverLetter   String?           @db.Text
+  resumeUrl     String?
+  status        ApplicationStatus @default(NEW)
+  hrNotes       String?           @db.Text
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  @@map("applications")
+}
+
+model Inquiry {
+  id              Int           @id @default(autoincrement())
+  name            String
+  email           String
+  phone           String?
+  message         String        @db.Text
+  serviceInterest String?
+  status          InquiryStatus @default(NEW)
+  notes           String?       @db.Text
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@map("inquiries")
+}
+
+model QuoteRequest {
+  id        Int           @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  service   String?
+  budget    String?
+  details   String        @db.Text
+  status    InquiryStatus @default(NEW)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@map("quote_requests")
+}
+
+model Testimonial {
+  id         Int      @id @default(autoincrement())
+  clientName String
+  company    String?
+  review     String   @db.Text
+  rating     Int      @default(5)
+  photo      String?
+  isActive   Boolean  @default(true)
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@map("testimonials")
+}
+
+model TeamMember {
+  id          Int      @id @default(autoincrement())
+  name        String
+  designation String
+  photo       String?
+  bio         String?  @db.Text
+  socialLinks Json?
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("team_members")
+}
+
+model ClientLogo {
+  id        Int      @id @default(autoincrement())
+  name      String
+  logo      String
+  website   String?
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+
+  @@map("client_logos")
+}
+
+model NewsletterSubscriber {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@map("newsletter_subscribers")
+}
