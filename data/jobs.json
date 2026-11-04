@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Flutter Mobile App Engineer",
+    "department": "Mobile Development",
+    "location": "Pune, Maharashtra (Hybrid)",
+    "type": "Full-time",
+    "description": "Design and build cross-platform mobile apps for Android & iOS.",
+    "requirements": [
+      "2+ years in Flutter/Dart",
+      "Experience with Firebase and REST"
+    ],
+    "isActive": true,
+    "id": 1792926369365,
+    "createdAt": "2026-10-25T11:06:09.365Z"
+  },
+  {
+    "id": 1,
+    "title": "Full Stack Web Developer",
+    "department": "Engineering",
+    "location": "Pune, Maharashtra",
+    "type": "Full-time",
+    "description": "Build scalable web applications using Next.js, React, Node.js and PostgreSQL.",
+    "requirements": [
+      "2+ years experience with Next.js or React",
+      "Knowledge of Node.js & REST APIs",
+      "Experience with relational databases"
+    ],
+    "isActive": true,
+    "createdAt": "2026-10-25T11:06:06.652Z"
+  },
+  {
+    "id": 2,
+    "title": "Digital Marketing Executive",
+    "department": "Marketing",
+    "location": "Pune, Maharashtra",
+    "type": "Full-time",
+    "description": "Drive growth for client brands through Google Ads, Meta Ads, SEO, and social funnels.",
+    "requirements": [
+      "1+ years in performance marketing",
+      "Google Ads & Meta Ads expertise",
+      "Strong analytical and copywriting skills"
+    ],
+    "isActive": true,
+    "createdAt": "2026-10-25T11:06:06.653Z"
+  }
+]

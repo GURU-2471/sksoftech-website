@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SK Softech and Digital Marketing — Corporate Brochure</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --navy: #0B1F4B;
+      --blue: #1E6FFF;
+      --yellow: #FFC21A;
+      --dark: #060F26;
+      --slate: #475569;
+      --light: #F8FAFC;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1e293b;
+      background: #f1f5f9;
+      padding: 2rem 1rem;
+    }
+
+    .brochure-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 25px 50px -12px rgba(11, 31, 75, 0.15);
+      border-radius: 1.5rem;
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--navy) 0%, #0c2b6b 60%, var(--blue) 100%);
+      color: white;
+      padding: 3.5rem 3rem;
+      position: relative;
+    }
+
+    .brand-badge {
+      display: inline-block;
+      background: rgba(255, 194, 26, 0.2);
+      color: var(--yellow);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .title span {
+      color: var(--yellow);
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .contact-bar {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+
+    /* Body */
+    .content {
+      padding: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 24px;
+      background: var(--blue);
+      border-radius: 3px;
+    }
+
+    /* Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .service-card {
+      background: var(--light);
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: transform 0.2s;
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 0.75rem;
+      background: rgba(30, 111, 255, 0.1);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    /* AI Capabilities */
+    .ai-banner {
+      background: #060F26;
+      color: white;
+      border-radius: 1.25rem;
+      padding: 2.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .ai-banner h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--yellow);
+      margin-bottom: 0.5rem;
+    }
+
+    .ai-banner p {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .ai-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .ai-feature-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 0.75rem;
+    }
+
+    .ai-feature-pill strong {
+      display: block;
+      color: white;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .ai-feature-pill span {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    /* Packages */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 3rem;
+      font-size: 0.9rem;
+    }
+
+    .pricing-table th {
+      background: var(--navy);
+      color: white;
+      text-align: left;
+      padding: 1rem;
+      font-weight: 700;
+    }
+
+    .pricing-table th:first-child {
+      border-radius: 0.75rem 0 0 0;
+    }
+    .pricing-table th:last-child {
+      border-radius: 0 0.75rem 0 0;
+    }
+
+    .pricing-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      color: #334155;
+    }
+
+    .pricing-table tr:hover td {
+      background: #f8fafc;
+    }
+
+    .tier-name {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--light);
+      border-top: 1px solid #e2e8f0;
+      padding: 2rem 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--slate);
+    }
+
+    .print-btn {
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 12px rgba(30, 111, 255, 0.25);
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: white;
+      }
+      .brochure-container {
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .print-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="brochure-container">
+    <!-- Header -->
+    <div class="header">
+      <span class="brand-badge">Official Capabilities Profile</span>
+      <h1 class="title">SK Softech &amp; <span>Digital Marketing</span></h1>
+      <p class="tagline">
+        Your Vision | Our Technology | Your Growth. Empowering startups, retail enterprises, and corporations with high-performance web engineering, custom mobile apps, and scalable digital solutions.
+      </p>
+
+      <div class="contact-bar">
+        <div class="contact-item">📍 Pune, Maharashtra, India</div>
+        <div class="contact-item">📞 +91 9307696221</div>
+        <div class="contact-item">✉️ sksoftech2026@gmail.com</div>
+        <div class="contact-item">🌐 sksoftech.in</div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Services -->
+      <h3 class="section-title">Core Service Offerings</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h4>Web Engineering</h4>
+          <p>Custom business sites, E-Commerce, landing pages &amp; portfolios built on Next.js 15 with sub-second speeds.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h4>Mobile Apps</h4>
+          <p>Android &amp; iOS applications with intuitive UI/UX, GPS tracking, and real-time push notification systems.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📈</div>
+          <h4>Digital Marketing</h4>
+          <p>ROI-driven Google Search, Meta Ads, and full-funnel lead generation campaigns that convert clicks to revenue.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔍</div>
+          <h4>SEO Optimization</h4>
+          <p>Local Pune SEO, technical site optimization, and high-ranking content architectures for #1 Google rankings.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h4>Branding &amp; Creative</h4>
+          <p>Logo suites, UI/UX designs, brochures, social reels, video editing, and custom merchandise printing.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🛡️</div>
+          <h4>Managed IT Support</h4>
+          <p>Linux VPS server management, automated daily backups, security hardening, and 99.9% uptime guarantees.</p>
+        </div>
+      </div>
+
+      <!-- AI Capabilities -->
+      <div class="ai-banner">
+        <h3>🤖 Intelligent AI Features (Built-In)</h3>
+        <p>Every digital platform we build can be equipped with custom AI modules to boost conversions and reduce manual overhead:</p>
+        <div class="ai-features">
+          <div class="ai-feature-pill">
+            <strong>24/7 AI Lead Bot</strong>
+            <span>Answers client questions &amp; captures leads automatically.</span>
+          </div>
+          <div class="ai-feature-pill">
+            <strong>Instant Scoper</strong>
+            <span>Generates project estimates and tech stacks in seconds.</span>
+          </div>
+          <div class="ai-feature-pill">
+            <strong>HR Resume Parser</strong>
+            <span>Ranks applicant resumes against job roles.</span>
+          </div>
+          <div class="ai-feature-pill">
+            <strong>AI SEO Generator</strong>
+            <span>Writes search-engine optimized blogs in 1 click.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Packages Table -->
+      <h3 class="section-title">Engagement Tiers</h3>
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Ideal For</th>
+            <th>Deliverables</th>
+            <th>Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tier-name">Starter Business</td>
+            <td>Startups &amp; Local Brands</td>
+            <td>Responsive website, contact form, WhatsApp lead button, SEO setup</td>
+            <td>1 - 2 Weeks</td>
+          </tr>
+          <tr>
+            <td class="tier-name">Growth Dynamic</td>
+            <td>Established Companies</td>
+            <td>Dynamic site, full self-service Admin Panel, AI Assistant, Analytics</td>
+            <td>2 - 4 Weeks</td>
+          </tr>
+          <tr>
+            <td class="tier-name">Enterprise / Custom</td>
+            <td>E-Commerce &amp; Web Apps</td>
+            <td>Database, payment gateways, mobile apps, dedicated server setup</td>
+            <td>4 - 8 Weeks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div>
+        <strong>SK Softech and Digital Marketing</strong> &bull; Pune, Maharashtra
+      </div>
+      <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+  </div>
+
+</body>
+</html>

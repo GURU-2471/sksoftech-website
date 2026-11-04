@@ -1,0 +1,22 @@
+[
+  {
+    "name": "ssk",
+    "email": "ssk@gmail.com",
+    "phone": "9712131456",
+    "serviceInterest": "Website Development",
+    "message": "website  e commerce",
+    "id": 1792927009303,
+    "status": "NEW",
+    "createdAt": "2026-10-25T11:16:49.303Z"
+  },
+  {
+    "name": "Rajesh Verma",
+    "email": "rajesh.verma@businesspune.com",
+    "phone": "9876543210",
+    "serviceInterest": "Website Development",
+    "message": "Need complete e-commerce website with payment gateway and inventory.",
+    "id": 1792926366691,
+    "status": "NEW",
+    "createdAt": "2026-10-25T11:06:06.691Z"
+  }
+]
