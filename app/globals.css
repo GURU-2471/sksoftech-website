@@ -5,6 +5,9 @@
   --blue: #1e6fff;
   --yellow: #ffc21a;
   --white: #ffffff;
+  --theme-glow: rgba(30, 111, 255, 0.35);
+  --theme-gradient: linear-gradient(135deg, #1e6fff 0%, #ffc21a 100%);
+  --theme-primary-hover: #0b1f4b;
 }
 
 html {
@@ -26,11 +29,11 @@ body {
   background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e6fff;
+  background: var(--blue);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0b1f4b;
+  background: var(--navy);
 }
 
 /* Section spacing */
@@ -40,7 +43,7 @@ body {
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #1e6fff 0%, #ffc21a 100%);
+  background: var(--theme-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -53,8 +56,8 @@ body {
 }
 .card-hover:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px -15px rgba(30, 111, 255, 0.25);
-  border-color: rgba(30, 111, 255, 0.4);
+  box-shadow: 0 20px 40px -15px var(--theme-glow);
+  border-color: var(--blue);
 }
 
 /* Glass effect */
@@ -67,7 +70,7 @@ body {
 
 /* Button animations */
 .btn-primary {
-  background: #1e6fff;
+  background: var(--blue);
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 9999px;
@@ -78,14 +81,14 @@ body {
   gap: 0.5rem;
 }
 .btn-primary:hover {
-  background: #0b1f4b;
+  background: var(--theme-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(30, 111, 255, 0.4);
+  box-shadow: 0 8px 25px var(--theme-glow);
 }
 
 .btn-yellow {
-  background: #ffc21a;
-  color: #0b1f4b;
+  background: var(--yellow);
+  color: var(--navy);
   padding: 0.75rem 2rem;
   border-radius: 9999px;
   font-weight: 700;
@@ -95,7 +98,7 @@ body {
   gap: 0.5rem;
 }
 .btn-yellow:hover {
-  background: #ffb300;
+  filter: brightness(0.92);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(255, 194, 26, 0.4);
 }
@@ -113,15 +116,15 @@ body {
 }
 .btn-outline:hover {
   background: white;
-  color: #0b1f4b;
+  color: var(--navy);
   transform: translateY(-2px);
 }
 
 /* Section heading style */
 .section-tag {
   display: inline-block;
-  background: rgba(30, 111, 255, 0.1);
-  color: #1e6fff;
+  background: color-mix(in srgb, var(--blue) 12%, transparent);
+  color: var(--blue);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -143,8 +146,8 @@ body {
   background: white;
 }
 .form-input:focus {
-  border-color: #1e6fff;
-  box-shadow: 0 0 0 3px rgba(30, 111, 255, 0.1);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 15%, transparent);
 }
 
 /* Infinite Marquee Animation */

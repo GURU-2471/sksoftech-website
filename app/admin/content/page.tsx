@@ -15,13 +15,16 @@ import {
   BarChart,
   Briefcase,
   Monitor,
+  Palette,
+  Check,
 } from "lucide-react";
 import toast from "react-hot-toast";
-import { SiteContent, ServiceItem, ProjectItem } from "@/lib/siteContentStore";
+import type { SiteContent, ServiceItem, ProjectItem } from "@/lib/siteContentStore";
+import { THEME_PRESETS } from "@/lib/themePresets";
 
 export default function AdminContentPage() {
   const [content, setContent] = useState<SiteContent | null>(null);
-  const [activeTab, setActiveTab] = useState<"hero" | "stats" | "services" | "projects" | "contact">("hero");
+  const [activeTab, setActiveTab] = useState<"theme" | "hero" | "stats" | "services" | "projects" | "contact">("theme");
   const [saving, setSaving] = useState(false);
 
   // New service state
@@ -168,6 +171,7 @@ export default function AdminContentPage() {
       {/* Tabs */}
       <div className="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
         {[
+          { key: "theme", label: "Website Theme Palette", icon: Palette },
           { key: "hero", label: "Hero Banner", icon: Monitor },
           { key: "stats", label: "Counters & Stats", icon: BarChart },
           { key: "services", label: "Services (11+)", icon: Layers },
@@ -191,6 +195,106 @@ export default function AdminContentPage() {
           );
         })}
       </div>
+
+      {/* TAB 0: THEME PALETTE */}
+      {activeTab === "theme" && (
+        <div className="bg-slate-950/70 border border-slate-800 rounded-2xl p-6 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-4">
+            <div>
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Palette className="text-[#FFC21A]" size={18} /> Visitor Website Theme Palette
+              </h3>
+              <p className="text-xs text-slate-400 mt-1">
+                Select a visual mood for your public website. Accents, glow glows, neon borders, and buttons dynamically transform instantly.
+              </p>
+            </div>
+            <div className="text-xs font-mono px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
+              Active: <span className="text-amber-400 font-bold">{content.theme?.activePaletteId || "classic"}</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {THEME_PRESETS.map((preset) => {
+              const isSelected = (content.theme?.activePaletteId || "classic") === preset.id;
+              return (
+                <div
+                  key={preset.id}
+                  onClick={() => {
+                    setContent({
+                      ...content,
+                      theme: { activePaletteId: preset.id },
+                    });
+                    toast.success(`Theme switched to "${preset.name}". Click Save to publish live!`);
+                  }}
+                  className={`cursor-pointer rounded-2xl p-5 border transition-all duration-300 relative overflow-hidden group ${
+                    isSelected
+                      ? "border-blue-500 bg-slate-900/90 shadow-xl shadow-blue-500/10 ring-2 ring-blue-500/50"
+                      : "border-slate-800 bg-slate-900/40 hover:border-slate-700 hover:bg-slate-900/70"
+                  }`}
+                >
+                  {/* Top Color preview bar */}
+                  <div
+                    className="h-2.5 rounded-full mb-4 w-full shadow-inner"
+                    style={{ background: preset.gradient }}
+                  />
+
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <h4 className="font-bold text-white text-sm group-hover:text-blue-400 transition-colors">
+                        {preset.name}
+                      </h4>
+                      <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                        {preset.subtitle}
+                      </p>
+                    </div>
+                    {isSelected && (
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center shadow-md">
+                        <Check size={14} />
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Swatches */}
+                  <div className="flex items-center gap-2 mt-4 pt-3 border-t border-slate-800/60">
+                    <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Colors:</span>
+                    <span
+                      className="w-5 h-5 rounded-full border border-white/20 shadow-sm"
+                      style={{ backgroundColor: preset.primary }}
+                      title={`Primary: ${preset.primary}`}
+                    />
+                    <span
+                      className="w-5 h-5 rounded-full border border-white/20 shadow-sm"
+                      style={{ backgroundColor: preset.accent }}
+                      title={`Accent: ${preset.accent}`}
+                    />
+                    <span
+                      className="w-5 h-5 rounded-full border border-white/20 shadow-sm"
+                      style={{ backgroundColor: preset.navy }}
+                      title={`Navy: ${preset.navy}`}
+                    />
+
+                    <span className="ml-auto text-[11px] font-medium text-slate-400 group-hover:text-white">
+                      {isSelected ? "Active" : "Click to select"}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between text-xs text-slate-300">
+            <span>Tip: Switch themes anytime to test festive offers, modern rebrands, or high-tech client presentations.</span>
+            <button
+              onClick={handleSave}
+              disabled={saving}
+              className="btn-yellow text-xs px-4 py-2 font-bold flex items-center gap-1.5 shadow-md disabled:opacity-50"
+            >
+              <Save size={13} />
+              {saving ? "Saving..." : "Apply Palette Live"}
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* TAB 1: HERO */}
       {activeTab === "hero" && (

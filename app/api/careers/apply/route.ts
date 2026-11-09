@@ -32,6 +32,13 @@ export async function POST(req: NextRequest) {
     let resumeText = "";
 
     if (resumeFile && resumeFile.size > 0) {
+      if (resumeFile.size > 5 * 1024 * 1024) {
+        return NextResponse.json(
+          { success: false, message: "Resume file size must not exceed 5MB." },
+          { status: 400 }
+        );
+      }
+
       const allowedTypes = [
         "application/pdf",
         "application/msword",
@@ -46,8 +53,11 @@ export async function POST(req: NextRequest) {
         fs.mkdirSync(uploadsDir, { recursive: true });
       }
 
-      const ext = resumeFile.name.split(".").pop();
-      const randomName = `${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
+      const rawExt = (resumeFile.name.split(".").pop() || "pdf").toLowerCase().replace(/[^a-z0-9]/g, "");
+      if (!["pdf", "doc", "docx"].includes(rawExt)) {
+        return NextResponse.json({ success: false, message: "Invalid resume extension." }, { status: 400 });
+      }
+      const randomName = `${Date.now()}_${Math.random().toString(36).slice(2)}.${rawExt}`;
       resumePath = path.join(uploadsDir, randomName);
       const buffer = Buffer.from(await resumeFile.arrayBuffer());
       fs.writeFileSync(resumePath, buffer);

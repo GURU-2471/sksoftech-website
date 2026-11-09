@@ -12,6 +12,15 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  // Verify admin session
+  const sessionCookie = req.cookies.get("sk_admin_session");
+  if (!sessionCookie || sessionCookie.value !== "authenticated_admin_sksoftech") {
+    return NextResponse.json(
+      { success: false, message: "Unauthorized. Admin session required to manage jobs." },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await req.json();
     const { action, jobData, id, updates } = body;
