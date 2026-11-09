@@ -3,7 +3,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import TechMarquee from "@/components/sections/TechMarquee";
 import StatsSection from "@/components/sections/StatsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
-import LiveDevStudio3D from "@/components/sections/LiveDevStudio3D";
+import DeveloperCartoon3D from "@/components/sections/DeveloperCartoon3D";
 import ProjectEstimator from "@/components/sections/ProjectEstimator";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
@@ -25,7 +25,7 @@ export default function Home() {
       <TechMarquee />
       <StatsSection />
       <ServicesSection />
-      <LiveDevStudio3D />
+      <DeveloperCartoon3D />
       <ProjectEstimator />
       <WhyChooseUsSection />
       <PortfolioSection />
