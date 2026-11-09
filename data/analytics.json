@@ -1,13 +1,41 @@
 {
-  "totalViews": 1,
-  "todayViews": 1,
+  "totalViews": 5,
+  "todayViews": 5,
   "lastDate": "2026-11-09",
   "devices": {
-    "Desktop": 1,
+    "Desktop": 5,
     "Mobile": 0,
     "Tablet": 0
   },
   "recentVisits": [
+    {
+      "path": "/",
+      "device": "Desktop",
+      "time": "12:20 am",
+      "date": "2026-11-09",
+      "ip": "Localhost (Pune)"
+    },
+    {
+      "path": "/",
+      "device": "Desktop",
+      "time": "12:19 am",
+      "date": "2026-11-09",
+      "ip": "Localhost (Pune)"
+    },
+    {
+      "path": "/",
+      "device": "Desktop",
+      "time": "12:19 am",
+      "date": "2026-11-09",
+      "ip": "Localhost (Pune)"
+    },
+    {
+      "path": "/",
+      "device": "Desktop",
+      "time": "12:18 am",
+      "date": "2026-11-09",
+      "ip": "Localhost (Pune)"
+    },
     {
       "path": "/",
       "device": "Desktop",

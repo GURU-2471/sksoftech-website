@@ -21,11 +21,35 @@ import {
 import toast from "react-hot-toast";
 import type { SiteContent, ServiceItem, ProjectItem } from "@/lib/siteContentStore";
 import { THEME_PRESETS, ADMIN_THEME_PRESETS } from "@/lib/themePresets";
+import { applyThemeVariables } from "@/components/ClientThemeSync";
 
 export default function AdminContentPage() {
   const [content, setContent] = useState<SiteContent | null>(null);
   const [activeTab, setActiveTab] = useState<"theme" | "hero" | "stats" | "services" | "projects" | "contact">("theme");
   const [saving, setSaving] = useState(false);
+
+  const handleSelectVisitorTheme = async (presetId: string, presetName: string) => {
+    if (!content) return;
+    const updatedContent = {
+      ...content,
+      theme: {
+        ...content.theme,
+        activePaletteId: presetId,
+      },
+    };
+    setContent(updatedContent);
+    localStorage.setItem("sk_active_theme", presetId);
+    applyThemeVariables(presetId);
+    toast.success(`Theme switched to "${presetName}" & applied live!`);
+
+    try {
+      await fetch("/api/admin/content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedContent),
+      });
+    } catch {}
+  };
 
   // New service state
   const [newService, setNewService] = useState({
@@ -219,13 +243,7 @@ export default function AdminContentPage() {
               return (
                 <div
                   key={preset.id}
-                  onClick={() => {
-                    setContent({
-                      ...content,
-                      theme: { activePaletteId: preset.id },
-                    });
-                    toast.success(`Theme switched to "${preset.name}". Click Save to publish live!`);
-                  }}
+                  onClick={() => handleSelectVisitorTheme(preset.id, preset.name)}
                   className={`cursor-pointer rounded-2xl p-5 border transition-all duration-300 relative overflow-hidden group ${
                     isSelected
                       ? "border-blue-500 bg-slate-900/90 shadow-xl shadow-blue-500/10 ring-2 ring-blue-500/50"

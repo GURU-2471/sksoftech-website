@@ -3,29 +3,59 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import ThemeInjector from "@/components/ThemeInjector";
+import ClientThemeSync from "@/components/ClientThemeSync";
 import VisitorTracker from "@/components/VisitorTracker";
+import JsonLd from "@/components/JsonLd";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "SK Softech and Digital Marketing | Pune",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://sksoftechdm.com"),
+  title: {
+    default: "SK Softech and Digital Marketing | Best Web Development & SEO in Pune",
+    template: "%s | SK Softech Pune",
+  },
   description:
-    "SK Softech and Digital Marketing — Your trusted digital partner in Pune for Website Development, Mobile Apps, Digital Marketing, SEO, Graphic Design, and more. Technology | Creativity | Growth.",
-  keywords:
-    "SK Softech, web development Pune, digital marketing Pune, mobile app development, SEO, graphic design, software development",
-  authors: [{ name: "SK Softech and Digital Marketing" }],
+    "Leading IT solutions & digital marketing agency in Pune. Custom Website Development, Mobile Apps, High-ROI Digital Marketing, SEO, and Society Management SaaS. Founded by Shubham Kale.",
+  keywords: [
+    "SK Softech",
+    "web development Pune",
+    "website designer Pune",
+    "digital marketing agency Pune",
+    "SEO services Pune",
+    "mobile app development Maharashtra",
+    "custom software development Pune",
+    "society management software Pune",
+  ],
+  authors: [{ name: "Shubham Kale", url: "https://sksoftechdm.com" }],
+  creator: "SK Softech and Digital Marketing",
+  publisher: "SK Softech",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "SK Softech and Digital Marketing",
-    description: "Your Vision | Our Technology | Your Growth",
-    url: "https://sksoftech.in",
+    title: "SK Softech and Digital Marketing | Pune",
+    description: "Your Vision | Our Technology | Your Growth. Premier Web & Software Development.",
+    url: "https://sksoftechdm.com",
     siteName: "SK Softech",
     locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SK Softech and Digital Marketing",
-    description: "Your Vision | Our Technology | Your Growth",
+    title: "SK Softech and Digital Marketing | Pune",
+    description: "Your Vision | Our Technology | Your Growth. Premier Web & Software Development.",
   },
 };
 
@@ -38,8 +68,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <ThemeInjector />
+        <JsonLd />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
+        <ClientThemeSync />
         <VisitorTracker />
         {children}
         <Toaster

@@ -10,6 +10,26 @@
   --theme-primary-hover: #0b1f4b;
 }
 
+/* Dynamic Color Overrides: forces Tailwind utility classes with brand hexes to honor the active theme */
+.text-\[\#1E6FFF\], .text-\[\#1e6fff\] { color: var(--blue) !important; }
+.bg-\[\#1E6FFF\], .bg-\[\#1e6fff\] { background-color: var(--blue) !important; }
+.border-\[\#1E6FFF\], .border-\[\#1e6fff\] { border-color: var(--blue) !important; }
+.ring-\[\#1E6FFF\], .ring-\[\#1e6fff\] { --tw-ring-color: var(--blue) !important; }
+.from-\[\#1E6FFF\], .from-\[\#1e6fff\] { --tw-gradient-from: var(--blue) !important; }
+.to-\[\#1E6FFF\], .to-\[\#1e6fff\] { --tw-gradient-to: var(--blue) !important; }
+
+.text-\[\#0B1F4B\], .text-\[\#0b1f4b\] { color: var(--navy) !important; }
+.bg-\[\#0B1F4B\], .bg-\[\#0b1f4b\] { background-color: var(--navy) !important; }
+.border-\[\#0B1F4B\], .border-\[\#0b1f4b\] { border-color: var(--navy) !important; }
+.from-\[\#0B1F4B\], .from-\[\#0b1f4b\] { --tw-gradient-from: var(--navy) !important; }
+.to-\[\#0B1F4B\], .to-\[\#0b1f4b\] { --tw-gradient-to: var(--navy) !important; }
+
+.text-\[\#FFC21A\], .text-\[\#ffc21a\] { color: var(--yellow) !important; }
+.bg-\[\#FFC21A\], .bg-\[\#ffc21a\] { background-color: var(--yellow) !important; }
+.border-\[\#FFC21A\], .border-\[\#ffc21a\] { border-color: var(--yellow) !important; }
+.from-\[\#FFC21A\], .from-\[\#ffc21a\] { --tw-gradient-from: var(--yellow) !important; }
+.to-\[\#FFC21A\], .to-\[\#ffc21a\] { --tw-gradient-to: var(--yellow) !important; }
+
 html {
   scroll-behavior: smooth;
 }
