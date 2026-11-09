@@ -1,5 +1,6 @@
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
+import TechMarquee from "@/components/sections/TechMarquee";
 import StatsSection from "@/components/sections/StatsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ProjectEstimator from "@/components/sections/ProjectEstimator";
@@ -17,9 +18,10 @@ import WebsiteTour from "@/components/sections/WebsiteTour";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-white">
       <Navbar />
       <HeroSection />
+      <TechMarquee />
       <StatsSection />
       <ServicesSection />
       <ProjectEstimator />

@@ -15,6 +15,7 @@ body {
   font-family: var(--font-inter), sans-serif;
   color: #1a1a2e;
   overflow-x: hidden;
+  background-color: #ffffff;
 }
 
 /* Custom scrollbar */
@@ -45,39 +46,23 @@ body {
   background-clip: text;
 }
 
-/* Animated underline */
-.animated-underline {
-  position: relative;
-}
-.animated-underline::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: #ffc21a;
-  transition: width 0.3s ease;
-}
-.animated-underline:hover::after {
-  width: 100%;
-}
-
-/* Card hover effects */
+/* Card hover with neon border glow */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 .card-hover:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(30, 111, 255, 0.15);
+  box-shadow: 0 20px 40px -15px rgba(30, 111, 255, 0.25);
+  border-color: rgba(30, 111, 255, 0.4);
 }
 
 /* Glass effect */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Button animations */
@@ -160,4 +145,36 @@ body {
 .form-input:focus {
   border-color: #1e6fff;
   box-shadow: 0 0 0 3px rgba(30, 111, 255, 0.1);
+}
+
+/* Infinite Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* Pulse Glow Keyframes */
+@keyframes subtle-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+.pulse-glow {
+  animation: subtle-glow 6s ease-in-out infinite;
 }
