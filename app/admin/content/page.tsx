@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import toast from "react-hot-toast";
 import type { SiteContent, ServiceItem, ProjectItem } from "@/lib/siteContentStore";
-import { THEME_PRESETS } from "@/lib/themePresets";
+import { THEME_PRESETS, ADMIN_THEME_PRESETS } from "@/lib/themePresets";
 
 export default function AdminContentPage() {
   const [content, setContent] = useState<SiteContent | null>(null);
@@ -280,6 +280,75 @@ export default function AdminContentPage() {
                 </div>
               );
             })}
+          </div>
+
+          {/* SECTION 2: ADMIN DASHBOARD THEME */}
+          <div className="pt-6 border-t border-slate-800/80">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <h4 className="text-sm font-bold text-white flex items-center gap-2">
+                  <Sliders className="text-[#1E6FFF]" size={16} /> Admin Dashboard Color Scheme
+                </h4>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Customize the appearance of this Admin portal for different mood settings (Obsidian, Royal Navy, or Emerald).
+                </p>
+              </div>
+              <div className="text-xs font-mono px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
+                Admin Mood: <span className="text-blue-400 font-bold">{content.theme?.adminPaletteId || "obsidian"}</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {ADMIN_THEME_PRESETS.map((adminPreset) => {
+                const isSelected = (content.theme?.adminPaletteId || "obsidian") === adminPreset.id;
+                return (
+                  <div
+                    key={adminPreset.id}
+                    onClick={() => {
+                      setContent({
+                        ...content,
+                        theme: {
+                          ...content.theme,
+                          activePaletteId: content.theme?.activePaletteId || "classic",
+                          adminPaletteId: adminPreset.id,
+                        },
+                      });
+                      toast.success(`Admin theme set to "${adminPreset.name}"!`);
+                    }}
+                    className={`cursor-pointer rounded-xl p-4 border transition-all duration-300 ${
+                      isSelected
+                        ? "border-amber-400 bg-slate-900/90 shadow-lg ring-1 ring-amber-400/50"
+                        : "border-slate-800 bg-slate-900/30 hover:border-slate-700"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-bold text-white">{adminPreset.name}</span>
+                      {isSelected && <Check size={14} className="text-amber-400" />}
+                    </div>
+                    <p className="text-[11px] text-slate-400 leading-tight mb-3">
+                      {adminPreset.subtitle}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="w-4 h-4 rounded-full border border-white/20"
+                        style={{ backgroundColor: adminPreset.bg }}
+                        title="Background"
+                      />
+                      <span
+                        className="w-4 h-4 rounded-full border border-white/20"
+                        style={{ backgroundColor: adminPreset.cardBg }}
+                        title="Card Surface"
+                      />
+                      <span
+                        className="w-4 h-4 rounded-full border border-white/20"
+                        style={{ backgroundColor: adminPreset.accent }}
+                        title="Accent Color"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between text-xs text-slate-300">

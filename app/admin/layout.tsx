@@ -12,6 +12,9 @@ import {
   Bot,
   LogOut,
   Layers,
+  Users,
+  ShieldCheck,
+  Database,
 } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -81,10 +84,24 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               Applications &amp; Resumes
             </Link>
             <Link
+              href="/admin/team"
+              className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-medium text-sm"
+            >
+              <Users size={18} className="text-[#FFC21A]" />
+              Team &amp; Roles (RBAC)
+            </Link>
+            <Link
+              href="/admin/audit-logs"
+              className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-medium text-sm"
+            >
+              <Database size={18} className="text-emerald-400" />
+              PostgreSQL Audit Logs
+            </Link>
+            <Link
               href="/admin/ai-config"
               className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-medium text-sm"
             >
-              <Bot size={18} className="text-[#FFC21A]" />
+              <Bot size={18} className="text-[#1E6FFF]" />
               AI Assistant &amp; Q&amp;A
             </Link>
             <Link

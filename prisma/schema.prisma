@@ -12,8 +12,10 @@ datasource db {
 
 enum Role {
   SUPER_ADMIN
+  MARKETING_SALES_HEAD
+  PROJECT_MANAGER
+  RECRUITER
   EDITOR
-  HR
 }
 
 enum ApplicationStatus {
@@ -250,4 +252,32 @@ model NewsletterSubscriber {
   createdAt DateTime @default(now())
 
   @@map("newsletter_subscribers")
+}
+
+model VisitorLog {
+  id        Int      @id @default(autoincrement())
+  visitorId String?
+  ipAddress String?
+  userAgent String?
+  device    String?  @default("Desktop")
+  path      String   @default("/")
+  referrer  String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("visitor_logs")
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  userName  String   @default("System")
+  userRole  String   @default("SUPER_ADMIN")
+  action    String
+  resource  String
+  details   String?  @db.Text
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("audit_logs")
 }

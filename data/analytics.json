@@ -1,0 +1,19 @@
+{
+  "totalViews": 1,
+  "todayViews": 1,
+  "lastDate": "2026-11-09",
+  "devices": {
+    "Desktop": 1,
+    "Mobile": 0,
+    "Tablet": 0
+  },
+  "recentVisits": [
+    {
+      "path": "/",
+      "device": "Desktop",
+      "time": "12:14 am",
+      "date": "2026-11-09",
+      "ip": "Localhost (Pune)"
+    }
+  ]
+}

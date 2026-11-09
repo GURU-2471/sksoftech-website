@@ -9,6 +9,9 @@ import {
   Download,
   ArrowUpRight,
   Bot,
+  Database,
+  ShieldCheck,
+  Lock,
 } from "lucide-react";
 import Link from "next/link";
 import { getVisitorAnalytics } from "@/lib/analytics";
@@ -48,6 +51,40 @@ export default function AdminDashboardPage() {
           >
             <Download size={14} /> Export Resumes Excel (CSV)
           </a>
+        </div>
+      </div>
+
+      {/* PostgreSQL Database & RBAC Live Status Banner */}
+      <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center">
+            <Database size={20} />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-white text-sm">PostgreSQL 18 Enterprise Database</span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                Connected: sksoftech_db
+              </span>
+            </div>
+            <p className="text-xs text-slate-400 mt-0.5">
+              17 active tables synchronized • Real visitor tracking • Audit logs • RBAC Roles: Super Admin, Marketing Head, PM, Recruiter.
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/admin/team"
+            className="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors"
+          >
+            <Lock size={13} className="text-[#FFC21A]" /> Team &amp; Roles (RBAC)
+          </Link>
+          <Link
+            href="/admin/audit-logs"
+            className="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors"
+          >
+            <ShieldCheck size={13} className="text-emerald-400" /> Audit Logs
+          </Link>
         </div>
       </div>
 

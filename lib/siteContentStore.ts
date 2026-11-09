@@ -112,6 +112,7 @@ export const THEME_PRESETS: ThemePalette[] = [
 export interface SiteContent {
   theme?: {
     activePaletteId: string;
+    adminPaletteId?: string;
     customPrimary?: string;
     customAccent?: string;
   };

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import ThemeInjector from "@/components/ThemeInjector";
+import VisitorTracker from "@/components/VisitorTracker";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -39,6 +40,7 @@ export default function RootLayout({
         <ThemeInjector />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
+        <VisitorTracker />
         {children}
         <Toaster
           position="top-right"

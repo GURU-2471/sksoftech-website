@@ -10,6 +10,17 @@ export interface ThemePalette {
   gradient: string;
 }
 
+export interface AdminThemePalette {
+  id: string;
+  name: string;
+  subtitle: string;
+  bg: string;
+  cardBg: string;
+  border: string;
+  accent: string;
+  text: string;
+}
+
 export const THEME_PRESETS: ThemePalette[] = [
   {
     id: "classic",
@@ -76,5 +87,48 @@ export const THEME_PRESETS: ThemePalette[] = [
     navy: "#0A192F",
     glow: "rgba(37, 99, 235, 0.35)",
     gradient: "linear-gradient(135deg, #2563EB 0%, #06B6D4 100%)",
+  },
+];
+
+export const ADMIN_THEME_PRESETS: AdminThemePalette[] = [
+  {
+    id: "obsidian",
+    name: "Obsidian Onyx",
+    subtitle: "Deep neutral carbon, slate cards & electric blue highlights",
+    bg: "#080c14",
+    cardBg: "#0f1624",
+    border: "#1e293b",
+    accent: "#1E6FFF",
+    text: "#f8fafc",
+  },
+  {
+    id: "royal-navy",
+    name: "Royal Navy & Amber",
+    subtitle: "Corporate deep navy with warm gold badges & accents",
+    bg: "#060d1e",
+    cardBg: "#0c1733",
+    border: "#172554",
+    accent: "#FFC21A",
+    text: "#ffffff",
+  },
+  {
+    id: "emerald-dark",
+    name: "Emerald Titanium",
+    subtitle: "Dark graphite with refined mint & growth indicators",
+    bg: "#061210",
+    cardBg: "#0c1f1a",
+    border: "#134e4a",
+    accent: "#10B981",
+    text: "#ecfdf5",
+  },
+  {
+    id: "carbon-noir",
+    name: "Minimal Carbon Luxe",
+    subtitle: "Matte black, bronze amber accents & subtle borders",
+    bg: "#0f0f11",
+    cardBg: "#18181c",
+    border: "#292524",
+    accent: "#F59E0B",
+    text: "#fafaf9",
   },
 ];
