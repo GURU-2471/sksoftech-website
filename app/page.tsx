@@ -4,6 +4,8 @@ import TechMarquee from "@/components/sections/TechMarquee";
 import StatsSection from "@/components/sections/StatsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import DeveloperCartoon3D from "@/components/sections/DeveloperCartoon3D";
+import EngineeringProcessTimeline from "@/components/sections/EngineeringProcessTimeline";
+import ArchitectureComparisonSlider from "@/components/sections/ArchitectureComparisonSlider";
 import ProjectEstimator from "@/components/sections/ProjectEstimator";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
@@ -26,6 +28,8 @@ export default function Home() {
       <StatsSection />
       <ServicesSection />
       <DeveloperCartoon3D />
+      <EngineeringProcessTimeline />
+      <ArchitectureComparisonSlider />
       <ProjectEstimator />
       <WhyChooseUsSection />
       <PortfolioSection />

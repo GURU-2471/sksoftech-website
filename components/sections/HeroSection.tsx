@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Star, Zap, Globe, ShieldCheck, Cpu } from "lucide-react";
+import MagneticFluidButton from "@/components/ui/MagneticFluidButton";
 
 interface HeroData {
   badge: string;
@@ -129,18 +130,22 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 mb-10"
             >
-              <button
+              <MagneticFluidButton
                 onClick={() => scrollTo("contact")}
-                className="btn-yellow text-sm sm:text-base px-8 py-4 shadow-xl shadow-amber-500/20"
+                variant="gold"
+                className="text-sm px-8 py-4"
               >
-                {hero.ctaPrimaryText} <ArrowRight size={18} />
-              </button>
-              <button
+                <span>{hero.ctaPrimaryText}</span>
+                <ArrowRight size={17} />
+              </MagneticFluidButton>
+              <MagneticFluidButton
                 onClick={() => scrollTo("portfolio")}
-                className="btn-outline text-sm sm:text-base px-8 py-4 hover:border-[#1E6FFF] hover:text-[#1E6FFF] transition-all"
+                variant="secondary"
+                className="text-sm px-8 py-4"
               >
-                {hero.ctaSecondaryText} <ArrowRight size={18} />
-              </button>
+                <span>{hero.ctaSecondaryText}</span>
+                <ArrowRight size={17} />
+              </MagneticFluidButton>
             </motion.div>
 
             {/* Tagline pills with glow */}
